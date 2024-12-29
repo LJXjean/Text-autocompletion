@@ -1,0 +1,33 @@
+# Minimum Python version
+# (Not strictly required as a line in requirements.txt,
+#  but keep in mind Python 3.8+ is recommended)
+# python>=3.8
+
+# Core libraries
+torch>=1.10
+datasets>=2.0
+
+transformers==4.30.2
+sentence-transformers==2.2.2
+faiss-cpu==1.7.3
+fastapi==0.95.2
+uvicorn==0.22.0
+streamlit==1.24.0
+
+
+
+# For optional parameter-efficient fine-tuning (LoRA, Prefix Tuning, etc.)
+# peft
+
+# For distributed/multi-GPU training and mixed precision
+#accelerate
+
+# For progress bars
+# tqdm
+
+fastapi
+uvicorn
+transformers
+torch
+requests
+pydantic
