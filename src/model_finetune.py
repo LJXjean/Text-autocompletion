@@ -7,7 +7,7 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArgume
 
 def load_data_for_finetuning(file_path):
     # Read JSON lines and prepare them for GPT2
-    # Usually, you want to convert (context, continuation) into a single text sample with a special separator, or just "context + continuation"
+    # Convert (context, continuation) into a single text sample with a special separator, or just "context + continuation"
     data = []
     with open(file_path, 'r', encoding='utf-8') as f:
         for line in f:

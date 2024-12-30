@@ -1,25 +1,31 @@
-import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
+import torch
+from typing import List
 
 class AutocompleteModel:
-    def __init__(self, model_path="gpt2"):
+    def __init__(self, model_path: str = "gpt2"):
         self.tokenizer = GPT2Tokenizer.from_pretrained(model_path)
         self.model = GPT2LMHeadModel.from_pretrained(model_path)
         self.model.eval()
-        # Ensure pad_token_id is set
-        self.model.config.pad_token_id = self.tokenizer.eos_token_id
 
-    def generate_text(self, prompt, max_length=50, temperature=0.7, top_p=0.9):
-        input_ids = self.tokenizer.encode(prompt, return_tensors="pt")
+    def generate_text(
+        self, 
+        prompt: str, 
+        retrieved_docs: List[str], 
+        max_length: int = 50, 
+        temperature: float = 0.7, 
+        top_p: float = 0.9
+    ) -> str:
+        # Optionally incorporate retrieved_docs into your prompt
+        combined_prompt = prompt + "\n\nRelevant:\n" + "\n".join(retrieved_docs) + "\n\nContinue:\n"
+
+        input_ids = self.tokenizer.encode(combined_prompt, return_tensors="pt")
         with torch.no_grad():
             outputs = self.model.generate(
-                input_ids=input_ids,
+                input_ids,
                 max_length=len(input_ids[0]) + max_length,
-                do_sample=True,
                 temperature=temperature,
-                top_p=top_p
+                top_p=top_p,
+                do_sample=True
             )
-
-
-        gen_text = self.tokenizer.decode(outputs[0][len(input_ids[0]):], skip_special_tokens=True)
-        return gen_text
+        return self.tokenizer.decode(outputs[0][len(input_ids[0]):], skip_special_tokens=True)

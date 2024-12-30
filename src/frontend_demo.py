@@ -1,3 +1,6 @@
+# streamlit run frontend_demo.py
+# for running the frontend demo
+
 import streamlit as st
 import requests
 from streamlit.components.v1 import html

@@ -3,31 +3,23 @@
 #  but keep in mind Python 3.8+ is recommended)
 # python>=3.8
 
-# Core libraries
-torch>=1.10
-datasets>=2.0
-
+# Core dependencies with fixed versions
+fastapi==0.95.2
+pydantic==1.10.13
+uvicorn==0.22.0
 transformers==4.30.2
 sentence-transformers==2.2.2
+huggingface_hub==0.16.4
+h5py==3.8.0
+torch>=1.10
+datasets>=2.0
 faiss-cpu==1.7.3
-fastapi==0.95.2
-uvicorn==0.22.0
 streamlit==1.24.0
 
+# Langchain and related packages - updated versions
+langchain>=0.1.0,<0.2.0
+langchain-community>=0.0.13,<0.1.0
+langchain-core>=0.1.16,<0.2.0
 
-
-# For optional parameter-efficient fine-tuning (LoRA, Prefix Tuning, etc.)
-# peft
-
-# For distributed/multi-GPU training and mixed precision
-#accelerate
-
-# For progress bars
-# tqdm
-
-fastapi
-uvicorn
-transformers
-torch
+# Additional dependencies
 requests
-pydantic
