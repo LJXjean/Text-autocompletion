@@ -15,7 +15,7 @@ app = FastAPI()
 autocomplete_model = AutocompleteModel("gpt2")
 
 # Global RAG helper to build & query the FAISS vector store
-rag_helper = RAGHelper(docs_dir="data/processed")
+rag_helper = RAGHelper(docs_dir="data/docs")#path of docs
 
 class AutocompleteRequest(BaseModel):
     text_before_cursor: str
