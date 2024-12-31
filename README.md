@@ -1,4 +1,4 @@
-## Canvas # Text Autocompletion with RAG
+# Text Autocompletion with RAG
 
 一个智能文本自动补全系统，采用GPT-2或其他开源LLM，并与检索加强生成技术(RAG)相结合，提供与上下文相关的文本提示。
 
